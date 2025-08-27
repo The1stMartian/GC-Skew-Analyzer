@@ -1,10 +1,16 @@
-### C. Breuer (Formerly C. Merrikh) 9/2021
+### Bacterial GC Skew Analyzer
+- <b>Purpose:</b> calculates the GC skew of each arm of bacterial chromosomes using multiple methods<br>
+- <b>General Concept:</b> Genes with a negative GCS (codon position 1 nucleotides) are in an atypical gene orientation (for that specific gene). This suggests they are part of a DNA fragment that was inverted by recombination at some point in the past. Genes in this position are often on the lagging strand, meaning they are transcribed in the opposing orientation to the movement of the replication fork. This can result in replication-transcription collisions, mutagenesis, replication for collapse. Lagging strand genes are often quite interesting because, in theory, they shouldn't exist - evolutionary pressure should have expunged the offending cell from the population due to major problems with DNA replication. As such, <b>these genes tend to be interesting.</b> This script helps find them.<br>
+- <b>Method:</b> The gcs.py script uses the calculation (G-C)/(G+C) for a single strand of DNA (not <i>GC content</i> which uses both strands) for each gene on a given bacterial chromosme. The calculation uses the leading strand of the replication fork as a reference. As such, the two arms of the chromosome (either side of the replication/terminus axis) have opposing reference strands. In light of our Nature Communications 2018 paper (PMID: 30405125) the script calculates the GCS using three methods: 1) Whole-gene sequence, 2) Only nucleotides in codon position 1, 3) Nucleotides in codon position 2, 4) Nucleotides in codon position 3. <br><br>
+
+![MTB](./Data/mtb.png)<br>
+<b>Diagram: </b>Depiction of the <i>M. tuberculosis</i> genome with leading/lagging strand genes on the outter ring and the leading strand GC Skew on the inner ring. The green/purple profiles show that the two arms of the chromosome have opposing GC Skew values which switch at the replication origin and terminus. The gray arrows point out two regions where the overall trend is reversed, indicating a local inversion - exactly what this program identifies on a gene-by-gene basis.
 
 ### Usage:
-&emsp;The GC skew analyzer script is written in Python3 and has no dependencies.<br> 
-&emsp;To execute the program, use command: "python GCS_v6.py"<br>
+- The GC skew analyzer script is written in Python3 and has no dependencies.<br> 
+- To execute the program, use command: "python gcs.py"<br>
 
-![GC Skew Analysis Script](https://github.com/The1stMartian/GCskew/blob/main/Data/cmdLine.png)
+![GC Skew Analysis Script](./Data/cmdLine.png)
 
 ### Input Files: (3)
 
@@ -13,7 +19,7 @@
 &emsp;3) Gene Model: For each genome, a comma delimited features file (<genomeName>_coords.csv)<br>
 
 Notes:<br>
-<i>Examples of each input file are provided in the accompanying folder, Data. Users should simply copy/paste their data into the files and re-execute the script. The script is controlled by the ter_coords.csv file. It will expect to find an accompanying genome sequence and features files for each listed genome/ter. The Data folder should be located the same directory as the GCS_vX.py script.</i>
+<i>Examples of each input file are provided in the accompanying folder, Data. Users should simply copy/paste their data into the files and re-execute the script. The script is controlled by the ter_coords.csv file. It will expect to find an accompanying genome sequence and features files for each listed genome/ter. The Data folder should be located the same directory as the gcs.py script.</i>
 
 
 ### Outputs: (6)
@@ -25,8 +31,8 @@ Notes:<br>
 5) Wiggle file by whole gene:  Codon position 2
 6) Wiggle file by whole gene:  Codon position 3
 
-Example output visualized in [MochiView](http://www.johnsonlab.ucsf.edu/mochi/)
-![GC skew data visualization](https://github.com/The1stMartian/GCskew/blob/main/Data/Mochi1.png)
+Example output visualized in [MochiView](https://www.johnsonlab.ucsf.edu/mochiview-downloads)<br>
+![GC skew data visualization](./Data/Mochi1.png)
 
 ### Notes:
 For whole-gene GC skew analysis, the GC skew values are reported relative to the <i>leading strand</i> of the replication fork. This calculation requires the user to provide the location of the replication terminus (ter). Nucleotide 1 of the fasta sequence is assumed to be the origin. If you don't know what your genome's ori and ter coordinates are, they can be looked up on DoriC: http://tubic.org/doric/public/index.php <br>
