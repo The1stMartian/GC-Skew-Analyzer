@@ -1,4 +1,4 @@
-<img src="./media/banner.jpg" alt="GC Skew Analyzer" width=700/>
+<img src="./media/banner.jpg" alt="GC Skew Analyzer" />
 ### Bacterial GC Skew Analyzer
 - <b>Purpose:</b> calculates the GC skew of each arm of bacterial chromosomes using multiple methods<br>
 - <b>General Concept:</b> Genes with a negative GCS (codon position 1 nucleotides) are in an atypical gene orientation (for that specific gene). This suggests they are part of a DNA fragment that was inverted by recombination at some point in the past. Genes in this position are often on the lagging strand, meaning they are transcribed in the opposing orientation to the movement of the replication fork. This can result in replication-transcription collisions, mutagenesis, replication for collapse. Lagging strand genes are often quite interesting because, in theory, they shouldn't exist - evolutionary pressure should have expunged the offending cell from the population due to major problems with DNA replication. As such, <b>these genes tend to be interesting.</b> This script helps find them.<br>
@@ -11,7 +11,7 @@
 - The GC skew analyzer script is written in Python3 and has no dependencies.<br> 
 - To execute the program, use command: "python gcs.py"<br>
 
-<img src="./media/console.jpg" alt="GC Skew Analysis Script" width=700/><br>
+<img src="./media/console.jpg" alt="GC Skew Analysis Script"/><br>
 
 ### Input Files: (3)
 
@@ -38,7 +38,7 @@ Notes:<br>
 - Hoizontal black line = GC Skew zero. (Above the line is positive, below is negative)
 - Genes (pink, bottom)
 
-<img src="./media/mochi.jpg" alt="GC skew media visualization" width=600/><br>
+<img src="./media/mochi.jpg" alt="GC skew media visualization"/><br>
 
 ### Notes:
 For whole-gene GC skew analysis, the GC skew values are reported relative to the <i>leading strand</i> of the replication fork. This calculation requires the user to provide the location of the replication terminus (ter). Nucleotide 1 of the fasta sequence is assumed to be the origin. If you don't know what your genome's ori and ter coordinates are, they can be looked up on DoriC: http://tubic.org/doric/public/index.php <br>
