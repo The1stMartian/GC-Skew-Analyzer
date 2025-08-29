@@ -1,4 +1,4 @@
-<img src="./media/banner.jpg" alt="GC Skew Analyzer" />
+<img src="./media/banner.jpg" alt="GC Skew Analyzer" /><br>
 ### Bacterial GC Skew Analyzer
 - <b>Purpose:</b> calculates the GC skew of each arm of bacterial chromosomes using multiple methods<br>
 - <b>General Concept:</b> Genes with a negative GCS (codon position 1 nucleotides) are in an atypical gene orientation (for that specific gene). This suggests they are part of a DNA fragment that was inverted by recombination at some point in the past. Genes in this position are often on the lagging strand, meaning they are transcribed in the opposing orientation to the movement of the replication fork. This can result in replication-transcription collisions, mutagenesis, replication for collapse. Lagging strand genes are often quite interesting because, in theory, they shouldn't exist - evolutionary pressure should have expunged the offending cell from the population due to major problems with DNA replication. As such, <b>these genes tend to be interesting.</b> This script helps find them.<br>
